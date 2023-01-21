@@ -2,7 +2,7 @@
 @section('contenido')
     <h1>Nueva Ganga</h1>
     @if(Auth::check())
-        <form action="{{ route('ganga.store') }}" method='POST'>
+        <form action="{{ route('ganga.store') }}" method='POST' enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="title">Título</label>
@@ -65,6 +65,16 @@
                 @if ($errors->has('category'))
                     <div class="text-danger">
                         {{ $errors->first('category') }}
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="img">Imagen</label>
+                <input type="file" name="img" id="img_ganga" class="form-control" value="{{ old('img') ?? ''}}" accept="image/*">
+                @if ($errors->has('img'))
+                    <div class="text-danger">
+                        {{ $errors->first('img') }}
                     </div>
                 @endif
             </div>

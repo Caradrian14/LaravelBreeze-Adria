@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('url');
             $table->integer("likes")->default(0);
             $table->integer("unlikes")->default(0);
+            $table->string("img");
             $table->float("price");
             $table->float("price_sale");
             $table->boolean("available")->default(false);

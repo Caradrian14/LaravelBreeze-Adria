@@ -11,4 +11,6 @@ class Ganga extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'ganga';
+
+    
 }

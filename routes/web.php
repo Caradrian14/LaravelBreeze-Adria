@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\GangaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +18,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('ganga', \App\Http\Controllers\GangaController::class);
+Route::resource('ganga', \App\Http\Controllers\GangaController::class)->except(['show']);
+Route::get('ganga/news', [GangaController::class, 'news'])->name('ganga.news');
+Route::get('ganga/highlights', [GangaController::class, 'highlights'])->name('ganga.highlights');
+Route::get('ganga', [GangaController::class, 'index']);
+Route::get('ganga/show/{id}', [GangaController::class, 'show']);
+
+Route::post('/thumbUp/{id}', 'GangaController@thumbUp')->name('ganga.thumbUp');
+Route::post('/thumbDown/{id}', 'GangaController@thumbDown')->name('ganga.thumbDown');
+
+Route::middleware('auth')->group(function () {
+
+});
+
 Route::resource('user', \App\Http\Controllers\UsersController::class);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

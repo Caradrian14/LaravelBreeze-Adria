@@ -1,5 +1,6 @@
 @extends('layouts.layoutMain')
 @section('contenido')
+    <img src="/storage/{{$ganga->img}}" alt="{{$ganga->title}}" width="200" height="200">
     <h1>Detalle de la Ganga</h1>
     <h2>Titulo: {{ $ganga->title }}</h2>
     <p>Descripcion: {{ $ganga->description }}</p>
