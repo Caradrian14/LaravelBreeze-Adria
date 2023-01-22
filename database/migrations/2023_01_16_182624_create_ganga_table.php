@@ -26,10 +26,10 @@ return new class extends Migration
             $table->string('url');
             $table->integer("likes")->default(0);
             $table->integer("unlikes")->default(0);
-            $table->string("img");
-            $table->float("price");
-            $table->float("price_sale");
-            $table->boolean("available")->default(false);
+            $table->string("img")->nullable();
+            $table->float("price")->nullable();
+            $table->float("price_sale")->nullable();
+            $table->boolean("available")->default(true);
 
             $table->unsignedBigInteger("category");
             $table->unsignedBigInteger("user_id");

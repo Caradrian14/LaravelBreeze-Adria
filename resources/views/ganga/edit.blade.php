@@ -1,6 +1,7 @@
 @extends('layouts.layoutMain')
 @section('contenido')
-    <h1>Edicion de la Ganga: {{ $ganga->title }}</h1>
+    <div class="container justify-content-center">
+    <h2>Edicion de la Ganga: {{ $ganga->title }}</h2>
     @if(Auth::check())
         <form action="{{ route('ganga.update', $ganga->id) }}" method='POST'>
             @csrf
@@ -77,4 +78,5 @@
             </div>
         </form>
     @endif
+    </div>
 @endsection

@@ -1,6 +1,7 @@
 @extends('layouts.layoutMain')
 @section('contenido')
-    <h1>Nueva Ganga</h1>
+    <div class="container justify-content-center">
+    <h2 class="text-center mb-4">Nueva Ganga</h2>
     @if(Auth::check())
         <form action="{{ route('ganga.store') }}" method='POST' enctype="multipart/form-data">
             @csrf
@@ -86,4 +87,5 @@
             </div>
         </form>
     @endif
+    </div>
 @endsection

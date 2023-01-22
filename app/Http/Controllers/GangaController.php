@@ -89,7 +89,7 @@ class gangaController extends Controller
         $ganga->img = $path;
         $ganga->save();
 
-        $gangas = Ganga::get();
+        $gangas = Ganga::paginate(10);;
         return view('ganga.index', compact('gangas', 'path'));
     }
 
