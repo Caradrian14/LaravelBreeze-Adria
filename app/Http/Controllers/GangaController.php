@@ -176,10 +176,11 @@ class gangaController extends Controller
         if(Auth::check()){
             $ganga = Ganga::find($id);
             $ganga->increment('likes', 1);
-            $ganga->save();
-            $this->index();
+            $gangas = Ganga::paginate(10);
+            return view('ganga.index', compact('gangas'));
         }else{
-            $this->index();
+            $gangas = Ganga::paginate(10);
+            return view('ganga.index', compact('gangas'));
         }
     }
 
@@ -188,9 +189,11 @@ class gangaController extends Controller
             $ganga = Ganga::find($id);
             $ganga->increment('unlikes', 1);
             $ganga->save();
-            $this->index();
+            $gangas = Ganga::paginate(10);
+            return view('ganga.index', compact('gangas'));
         }else{
-            $this->index();
+            $gangas = Ganga::paginate(10);
+            return view('ganga.index', compact('gangas'));
         }
     }
 }

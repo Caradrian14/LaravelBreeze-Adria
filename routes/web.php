@@ -24,8 +24,8 @@ Route::get('ganga/highlights', [GangaController::class, 'highlights'])->name('ga
 Route::get('ganga', [GangaController::class, 'index']);
 Route::get('ganga/show/{id}', [GangaController::class, 'show']);
 
-Route::post('/thumbUp/{id}', 'GangaController@thumbUp')->name('ganga.thumbUp');
-Route::post('/thumbDown/{id}', 'GangaController@thumbDown')->name('ganga.thumbDown');
+Route::post('/thumbUp/{id}', [GangaController::class, 'thumbUp'])->name('ganga.thumbUp');
+Route::post('/thumbDown/{id}', [GangaController::class, 'thumbDown'])->name('ganga.thumbDown');
 
 Route::middleware('auth')->group(function () {
 

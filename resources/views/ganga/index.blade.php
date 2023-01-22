@@ -18,12 +18,12 @@
                 <p class="card-text text-center">Me Gustas: {{ $ganga->unlikes }}</p>
                 <a class="btn btn-primary text-center mb-3" href="/ganga/show/{{ $ganga->id }}">Ver más</a>
                 @if (Auth::check())
-                    <form action="#" method="POST" class="justify-content-center">
+                    <form action="{{route('ganga.thumbUp',  $ganga->id)}}" method="POST" class="justify-content-center" enctype="multipart/form-data">
                         @csrf
                         <button type="submit" class="btn btn-primary text-center">Me Gusta</button>
                     </form>
 
-                    <form action="#" method="POST" class="justify-content-center">
+                    <form action="{{route('ganga.thumbDown',  $ganga->id)}}" method="POST" class="justify-content-center" enctype="multipart/form-data">
                         @csrf
                         <button type="submit" class="btn btn-danger text-center justify-content-center">No me Gusta</button>
                     </form>
