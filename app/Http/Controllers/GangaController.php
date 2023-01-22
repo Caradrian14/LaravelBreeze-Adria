@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Ganga;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class gangaController extends Controller
@@ -102,7 +103,9 @@ class gangaController extends Controller
     public function show($id)
     {
         $ganga = Ganga::with('category')->find($id);
-        return view('ganga.show', compact('ganga'));
+        $categoryBelonging = Category::findOrFail($ganga->category)->title;
+        $userOwner = User::findOrFail($ganga->user_id)->name;
+        return view('ganga.show', compact('ganga', 'categoryBelonging', 'userOwner'));
     }
 
     /**

@@ -12,7 +12,8 @@
     <p class="card-text">Precio: {{ $ganga->price }}</p>
     <p class="card-text">Precio en rebaja: {{ $ganga->price_sale }}</p>
     <p class="card-text">Disponible: {{ $ganga->available }}</p>
-    <p class="card-text">Categoria a la que pertenece: {{ $ganga->category }}</p>
+    <p class="card-text">Categoria a la que pertenece: {{ $categoryBelonging }}</p>
+    <p class="card-text">Usuario que lo creo: {{ $userOwner }}</p>
     @if(Auth::check())
         <button class="btn btn-primary m-2" onclick="location.href='{{ route('ganga.edit', $ganga->id) }}'" type="button">
             Editar</button>
