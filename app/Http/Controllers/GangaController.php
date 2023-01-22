@@ -118,7 +118,7 @@ class gangaController extends Controller
             $ganga = Ganga::with('category')->find($id);
             return view('ganga.edit', compact('ganga', 'categorys'));
         }
-        $gangas = Ganga::orderBy('title', 'asc')->get();
+        $gangas = Ganga::orderBy('title', 'asc')->paginate(10);
         return view('ganga.index', compact('gangas'));
     }
 
