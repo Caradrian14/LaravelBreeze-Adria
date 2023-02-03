@@ -1,0 +1,129 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your super ApplicationAPI For PHP Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/gangas": {
+            "get": {
+                "summary": "Listar todas las gangas",
+                "operationId": "1b523ecccb6cbd3e6d42038aad8dde88",
+                "responses": {
+                    "200": {
+                        "description": "Lista de todas las gangas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Ganga"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error al listar las gangas"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Sign in",
+                "description": "Login by email, password",
+                "operationId": "authLogin",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    },
+                                    "persistent": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Ganga": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "title": {
+                        "description": "Titulo Ganga",
+                        "type": "string",
+                        "readOnly": "true"
+                    },
+                    "description": {
+                        "description": "Descripcion Ganga",
+                        "type": "string",
+                        "readOnly": "true"
+                    },
+                    "url": {
+                        "description": "url Ganga",
+                        "type": "string",
+                        "readOnly": "true"
+                    },
+                    "likes": {
+                        "description": "numero de me gusta de Ganga",
+                        "type": "integer",
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Ganga"
+                }
+            }
+        }
+    }
+}

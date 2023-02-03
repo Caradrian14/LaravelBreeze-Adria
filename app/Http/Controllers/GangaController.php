@@ -7,7 +7,7 @@ use App\Models\Ganga;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-class gangaController extends Controller
+class GangaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -78,7 +78,7 @@ class gangaController extends Controller
         $ganga->price= $request->get('price');
         $ganga->price_sale= $request->get('price_sale');
         $ganga->user_id = $request->get('user_id');
-        $ganga->category = $request->get('category');
+        $ganga->category_id = $request->get('category');
 
         $ganga->save();
 
@@ -103,7 +103,7 @@ class gangaController extends Controller
     public function show($id)
     {
         $ganga = Ganga::with('category')->find($id);
-        $categoryBelonging = Category::findOrFail($ganga->category)->title;
+        $categoryBelonging = Category::findOrFail($ganga->category_id)->title;
         $userOwner = User::findOrFail($ganga->user_id)->name;
         return view('ganga.show', compact('ganga', 'categoryBelonging', 'userOwner'));
     }
@@ -142,7 +142,7 @@ class gangaController extends Controller
         $ganga->price= $request->get('price');
         $ganga->price_sale= $request->get('price_sale');
         $ganga->user_id = $request->get('user_id');
-        $ganga->category = $request->get('category');
+        $ganga->category_id = $request->get('category');
         $ganga->save();
 
         return view('ganga.show', compact('ganga'));

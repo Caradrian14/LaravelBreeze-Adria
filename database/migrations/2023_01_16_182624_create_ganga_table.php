@@ -31,11 +31,11 @@ return new class extends Migration
             $table->float("price_sale")->nullable();
             $table->boolean("available")->default(true);
 
-            $table->unsignedBigInteger("category");
+            $table->unsignedBigInteger("category_id");
             $table->unsignedBigInteger("user_id");
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category')->references('id')->on('category');
+            $table->foreign('category_id')->references('id')->on('category');
             $table->timestamps();
         });
     }

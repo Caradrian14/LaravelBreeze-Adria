@@ -18,15 +18,15 @@ class checkOwnerGanga
     public function handle(Request $request, Closure $next)
     {
         if(!auth()->check()){
-            abort(463);
+            abort(403);
         }
 
-        $ganga = Ganga::findOrFail($request->route('id'));
+        $userId = $request->route('ganga')->user_id;
+        $gangauserId = intval($request->user_id);
 
-        if($ganga->user_id !== auth()->user()->id){
-            abort(463);
+        if($gangauserId !== $userId){
+            abort(403);
         }
-
         return $next($request);
     }
 }

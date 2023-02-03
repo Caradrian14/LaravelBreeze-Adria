@@ -27,7 +27,7 @@ class GangaFactory extends Factory
             'price' => $this->faker->randomDigit(),
             'price_sale' => $this->faker->randomDigit(),
             'user_id'=>User::inRandomOrder()->first()->id,
-            'category'=>Category::inRandomOrder()->first()->id,
+            'category_id'=>Category::inRandomOrder()->first()->id,
         ];
     }
 }

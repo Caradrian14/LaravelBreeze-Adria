@@ -6,7 +6,7 @@ use App\Models\Ganga;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class usersController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
